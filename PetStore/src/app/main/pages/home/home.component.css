@@ -5,6 +5,10 @@
     color: var(--first-color);
 }
 
+.cancel_button{
+    margin-right: 1vh;
+}
+
 /* Texts */
 .title_new_pet_button{
     font-weight: 500;

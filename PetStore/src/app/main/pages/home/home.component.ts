@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+import Swal from 'sweetalert2'
 
 import { Pet } from '../../interfaces/interfaces.interface';
 import { environment } from 'src/app/environments/environment';
@@ -54,7 +56,19 @@ export class HomeComponent {
     console.log("Form ", this.newPetForm.value)
     let url = this.url + "pet";
     this.http.post<any>(url, this.newPetForm.value).subscribe((res)=>{
-      this.getPets();
+      Swal.fire({
+        icon: 'success',
+        confirmButtonColor: '#3471cd',
+        text: 'A new pet was created!',
+        confirmButtonText: 'Ok',
+        allowOutsideClick: false
+      }).then((result) => {
+        if (result.isConfirmed) {
+          document.getElementById('buttonDismiss')?.click();
+          this.getPets();
+          location.reload();
+        } 
+      })
     }),
     (error:any) => {
       console.log("Error: ", error)
