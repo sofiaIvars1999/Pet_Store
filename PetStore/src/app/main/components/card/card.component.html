@@ -1,5 +1,5 @@
 <div class="card my-3 p-2">
-    <!-- <img src="{{pet.image}}" class="card-img-top" alt="{{pet.name}}"> -->
+    <img *ngIf="pictureShowed" src="{{pet.image}}" class="card-img-top" alt="{{pet.name}}"> 
     <div class="card-body">
         <h5 class="card-title text-center mb-3">{{pet.name}}</h5>
 

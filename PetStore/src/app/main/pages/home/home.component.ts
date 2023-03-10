@@ -24,6 +24,7 @@ export class HomeComponent {
     'name': ['', Validators.required],
     'status': ['', Validators.required]
   })
+  pictureShowed:boolean = false;
 
   /* ------------------- Functions ------------------- */
   constructor( public http:HttpClient, private fb: FormBuilder ){
@@ -72,5 +73,10 @@ export class HomeComponent {
   changeStatus(status:string){
     localStorage.setItem("status",status);
     this.getPets();
+  }
+
+  // Show picture
+  showPicture(){
+    this.pictureShowed = !this.pictureShowed;
   }
 }

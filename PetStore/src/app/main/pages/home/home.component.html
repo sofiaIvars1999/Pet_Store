@@ -1,8 +1,8 @@
 <div class="general_container">
-    <h3 class="mb-4">Welcome to Pet Store</h3>
+    <h3 class="mb-4">Welcome to Pet Dreamland!</h3>
 
     <div class="row mb-3">
-        <div class="col-4">
+        <div class="col-2">
             <input 
                 type="text"
                 class="form-control search_bar_pets"
@@ -11,13 +11,25 @@
         </div>
         <div class="col-2">
             <div class="dropdown">
-                <button class="secondary_button dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <button class="secondary_button dropdown-toggl" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="uil uil-filter icon"></i>Filter by status
                 </button>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item button_to_change_status" *ngFor="let status of statusOptions" (click)="changeStatus(status)">{{status}}</a></li>
                 </ul>
               </div>
+        </div>
+        <div class="col-2">
+            <div *ngIf="pictureShowed==false; else hidePicturesButton">
+                <button (click)="showPicture()" class="secondary_button dropdown-toggl" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="uil uil-camera icon"></i>Show Pictures
+                </button>
+            </div>
+            <ng-template #hidePicturesButton >
+                <button (click)="showPicture()" class="secondary_button dropdown-toggl" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="uil uil-camera-slash icon"></i>Hide pictures
+                </button>
+            </ng-template>
         </div>
         <div class="col-6">
             <button 
@@ -31,7 +43,7 @@
             <!-- Modal window for add a pet -->
             <div class="offcanvas offcanvas-end p-3" tabindex="-1" id="addPet" aria-labelledby="offcanvasRightLabel">
                 <div class="offcanvas-header">
-                  <h5 class="offcanvas-title title_new_pet_button mt-4" id="offcanvasRightLabel">New pet</h5>
+                  <h5 class="offcanvas-title title_new_pet_button" id="offcanvasRightLabel">New pet</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
@@ -49,9 +61,10 @@
 
                         <!-- Status -->
                         <label class="mb-1">Status</label>
-                        <div class="input-group input-group-sm mb-3 w-70">
+                        <div class="input-group input-group-sm mb-1 w-70">
                             <input type="text" formControlName="status" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                         </div>
+                        <p class="mb-4"><small>The status must be 'available', 'pending' or 'sold'.</small></p>
 
                         <button class="primary_button float-end" type="submit">
                             Add pet
@@ -64,7 +77,7 @@
 
     <div class="row">
         <div *ngFor="let pet of pets" class="col-xl-3 col-sm-6 col-xs-12">
-            <app-card [pet]="pet"></app-card>
+            <app-card [pet]="pet" [pictureShowed]="pictureShowed"></app-card>
         </div>
     </div>
 </div>

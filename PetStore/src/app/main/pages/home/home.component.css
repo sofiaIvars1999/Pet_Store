@@ -8,9 +8,14 @@
 /* Texts */
 .title_new_pet_button{
     font-weight: 500;
+    margin-top: 15vh;
 }
 
 /* Search bar */
+.search_bar_pets{
+    padding: 1vh 2.2vh;
+}
+
 .search_bar_pets:hover, :focus{
     border: 1px solid var(--first-color);
     outline: none !important;

@@ -11,6 +11,7 @@ export class CardComponent {
 
   /* ------------------- Variables ------------------- */
   @Input() pet!: Pet;
+  @Input() pictureShowed!:boolean;
 
   /* ------------------- Functions ------------------- */
 
