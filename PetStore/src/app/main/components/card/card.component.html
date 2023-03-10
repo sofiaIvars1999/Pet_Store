@@ -1,0 +1,13 @@
+<div class="card my-3">
+    <!-- <img src="{{pet.image}}" class="card-img-top" alt="{{pet.name}}"> -->
+    <div class="card-body">
+        <span class="btn float-end" [ngClass]="{
+            'btn-success': pet.status.toLowerCase().includes('available'),
+            'btn-warning': pet.status.toLowerCase().includes('pending'),
+            'btn-danger': pet.status.toLowerCase().includes('sold')
+        }">
+            {{pet.status}}
+        </span>
+        <h5 class="card-title">{{pet.name}}</h5>
+    </div>
+</div>

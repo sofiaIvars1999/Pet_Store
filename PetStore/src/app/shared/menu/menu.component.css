@@ -1,0 +1,11 @@
+.menu_container{
+    color: white;
+    background-image: linear-gradient(
+        to right,
+        #301fb4 0%,
+        #5ab4fe 20%,
+        #5ab4fe 40%,
+        #7CCEFE 60%,
+        #A2DCFE 80%
+    );
+}
