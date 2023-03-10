@@ -1,11 +1,15 @@
+/* General */
 .menu_container{
     color: white;
+    padding: 3.5vh 8vh;
     background-image: linear-gradient(
         to right,
-        #301fb4 0%,
-        #5ab4fe 20%,
-        #5ab4fe 40%,
-        #7CCEFE 60%,
-        #A2DCFE 80%
+        #0e39a7 0%,
+        #21A6FF 50%
     );
+}
+
+/* Texts */
+.title_menu{
+    font-size: 300;
 }

@@ -1,7 +1,7 @@
-<div class="general_container p-4">
-    <h1>Pet Store</h1>
+<div class="general_container">
+    <h3 class="mb-4">Welcome to Pet Store</h3>
 
-    <div class="row">
+    <div class="row mb-3">
         <div class="col-4">
             <input 
                 type="text"
@@ -10,17 +10,38 @@
                 (input)="filter($event)">
         </div>
         <div class="col-2">
-            
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Filter by status
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" *ngFor="let status of statusOptions"><button class="button_to_change_status" (click)="changeStatus(status)">{{status}}</button></a></li>
+                </ul>
+              </div>
         </div>
         <div class="col-6">
-            <button class="btn btn-primary float-end">
+            <button 
+                class="primary_button float-end"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#addPet"
+                aria-controls="offcanvasRight">
                 <i class="uil uil-plus"></i>Add pet
             </button>
+
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="addPet" aria-labelledby="offcanvasRightLabel">
+                <div class="offcanvas-header">
+                  <h5 class="offcanvas-title" id="offcanvasRightLabel"><i class="uil uil-plus"></i>New pet</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                  ...
+                </div>
+            </div>
         </div>
     </div>
 
     <div class="row">
-        <div *ngFor="let pet of pets" class="col-xl-4 col-sm-6 col-xs-12">
+        <div *ngFor="let pet of pets" class="col-xl-3 col-sm-6 col-xs-12">
             <app-card [pet]="pet"></app-card>
         </div>
     </div>
