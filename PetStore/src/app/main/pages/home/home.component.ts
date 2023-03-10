@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
 import { Pet } from '../../interfaces/interfaces.interface';
 import { environment } from 'src/app/environments/environment';
@@ -18,9 +19,14 @@ export class HomeComponent {
   petsCopy: Pet[] = [];
   initialStatus:string = 'available';
   statusOptions:string[] =  ['available', 'pending', 'sold'];
+  newPetForm: FormGroup = this.fb.group({
+    'id': [0, Validators.required],
+    'name': ['', Validators.required],
+    'status': ['', Validators.required]
+  })
 
   /* ------------------- Functions ------------------- */
-  constructor( public http:HttpClient ){
+  constructor( public http:HttpClient, private fb: FormBuilder ){
     this.getPets();
     localStorage.setItem("status",this.initialStatus);
   }
@@ -43,9 +49,10 @@ export class HomeComponent {
   }
 
   // Add a new pet to the store
-  async addPet(form:any){
+  addPet(){
+    console.log("Form ", this.newPetForm.value)
     let url = this.url + "pet";
-    await this.http.post<any>(url, form).subscribe((res)=>{
+    this.http.post<any>(url, this.newPetForm.value).subscribe((res)=>{
       this.getPets();
     }),
     (error:any) => {
@@ -66,11 +73,4 @@ export class HomeComponent {
     localStorage.setItem("status",status);
     this.getPets();
   }
-
-  // Generate random id to add a new pet
-  getRandomId(){
-    //console.log("Random ", Math.floor((Math.random() * (100000 - 0 + 1)) + 0))
-   // return Math.random();
-  }
-
 }

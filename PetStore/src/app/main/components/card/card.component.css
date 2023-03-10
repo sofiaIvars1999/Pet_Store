@@ -1,0 +1,9 @@
+/* Status */
+.status_pet{
+    width: 100%;
+    margin: 0 ;
+}
+
+.status_pet:hover{
+    cursor: default;
+}

@@ -5,17 +5,17 @@
         <div class="col-4">
             <input 
                 type="text"
-                class="form-control"
+                class="form-control search_bar_pets"
                 placeholder="Search by name..."
                 (input)="filter($event)">
         </div>
         <div class="col-2">
             <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Filter by status
+                <button class="secondary_button dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="uil uil-filter icon"></i>Filter by status
                 </button>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" *ngFor="let status of statusOptions"><button class="button_to_change_status" (click)="changeStatus(status)">{{status}}</button></a></li>
+                  <li><a class="dropdown-item button_to_change_status" *ngFor="let status of statusOptions" (click)="changeStatus(status)">{{status}}</a></li>
                 </ul>
               </div>
         </div>
@@ -28,13 +28,35 @@
                 <i class="uil uil-plus"></i>Add pet
             </button>
 
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="addPet" aria-labelledby="offcanvasRightLabel">
+            <!-- Modal window for add a pet -->
+            <div class="offcanvas offcanvas-end p-3" tabindex="-1" id="addPet" aria-labelledby="offcanvasRightLabel">
                 <div class="offcanvas-header">
-                  <h5 class="offcanvas-title" id="offcanvasRightLabel"><i class="uil uil-plus"></i>New pet</h5>
+                  <h5 class="offcanvas-title title_new_pet_button mt-4" id="offcanvasRightLabel">New pet</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
-                  ...
+                    <form autocomplete="off" [formGroup]="newPetForm" (ngSubmit)="addPet()"> 
+                        <!-- Id -->
+                        <label class="mb-1">Id</label>
+                        <div class="input-group input-group-sm mb-3 w-70">
+                            <input type="number" formControlName="id" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                        </div>
+                        <!-- Name -->
+                        <label class="mb-1">Name</label>
+                        <div class="input-group input-group-sm mb-3 w-70">
+                            <input type="text" formControlName="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                        </div>
+
+                        <!-- Status -->
+                        <label class="mb-1">Status</label>
+                        <div class="input-group input-group-sm mb-3 w-70">
+                            <input type="text" formControlName="status" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                        </div>
+
+                        <button class="primary_button float-end" type="submit">
+                            Add pet
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>

@@ -9,6 +9,7 @@
     /* Colors */
     --first-color: #21A6FF;
     --first-color-hover: #098cfe;
+    --second-color: #eeeeee;
 }
 
 .general_container{
@@ -16,22 +17,36 @@
 }
 
 /* Buttons */
-.primary_button{
+.primary_button, .secondary_button{
     margin-bottom: 2vh;
     border-radius: 6px;
     padding: 1vh;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
     transition: all 0.3s ease-in-out;
+    padding: 1vh 2.2vh;
+}
+
+.primary_button{
     background-color: var(--first-color);
     color: white;
     border: 1px solid var(--first-color);
-    padding: 1vh 2.2vh;
 }
 
 .primary_button:hover{
     background-color: var(--first-color-hover);
     border: 1px solid var(--first-color-hover);
     color: white;
+}
+
+.secondary_button{
+    background-color: white;
+    color: var(--first-color);
+    border: 1px solid var(--first-color);
+}
+
+.secondary_button:hover{
+    background-color: var(--second-color);
+    color: var(--first-color);
 }
 
 /* Texts */
